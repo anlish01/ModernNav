@@ -78,7 +78,7 @@ const RangeSlider: React.FC<{
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="range-primary w-full"
+        className="w-full"
         style={{
           background: `linear-gradient(to right, var(--theme-primary) 0%, var(--theme-primary) ${percent}%, var(--surface-hover) ${percent}%, var(--surface-hover) 100%) center / 100% var(--range-track-height) no-repeat`,
         }}
@@ -103,6 +103,7 @@ const SegmentedControl = <T extends string>({
       <button
         key={opt.value}
         onClick={() => onChange(opt.value)}
+        aria-pressed={value === opt.value}
         className={`flex-1 px-3 py-1.5 rounded-lg text-[11px] font-bold uppercase tracking-wider transition-all ${
           value === opt.value
             ? "bg-[var(--theme-primary)] text-white shadow-md"
