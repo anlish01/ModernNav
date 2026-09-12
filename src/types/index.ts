@@ -16,6 +16,8 @@ export interface SubCategory {
 export interface Category {
   id: string;
   title: string;
+  /** Login-only category: filtered out of visitor bootstrap responses. */
+  isPrivate?: boolean;
   subCategories: SubCategory[];
 }
 

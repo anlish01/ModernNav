@@ -193,5 +193,7 @@
   "stats_links": "Links",
   "stats_zero_click": "Never Clicked",
   "stats_top_visited": "Most Visited (Top 10)",
-  "tab_stats": "Stats"
+  "tab_stats": "Stats",
+  "category_private": "Private category",
+  "category_make_private": "Make private"
 }

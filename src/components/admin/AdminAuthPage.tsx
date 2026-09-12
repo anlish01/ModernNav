@@ -3,7 +3,8 @@ import { Lock, AlertCircle, Loader2, LogIn } from "../../utils/icons";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { storageService } from "../../services/storage";
-import { useBootstrap } from "../../services/queries";
+import { useBootstrap, queryKeys } from "../../services/queries";
+import { useQueryClient } from "@tanstack/react-query";
 import { DEFAULT_PREFS } from "../../constants/defaults";
 import { usePrefersDark } from "../../hooks/usePrefersDark";
 import { resolveThemeMode } from "../../utils/theme";
@@ -12,6 +13,7 @@ export const AdminAuthPage: React.FC = () => {
   const { t } = useLanguage();
   const navigate = useNavigate();
   const location = useLocation();
+  const queryClient = useQueryClient();
   const { data } = useBootstrap();
   const isDefaultCode = data?.isDefaultCode ?? false;
   // "auto" resolves against the OS preference — same rule as AdminLayout.
@@ -35,6 +37,8 @@ export const AdminAuthPage: React.FC = () => {
     try {
       const success = await storageService.login(authInput);
       if (success) {
+        // Re-fetch bootstrap with the new token so private categories appear.
+        queryClient.invalidateQueries({ queryKey: queryKeys.bootstrap });
         navigate(redirectTo, { replace: true });
       } else {
         setAuthError(t("incorrect_code"));

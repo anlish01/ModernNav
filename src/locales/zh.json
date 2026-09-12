@@ -193,5 +193,7 @@
   "stats_links": "链接",
   "stats_zero_click": "零点击",
   "stats_top_visited": "最常访问（Top 10）",
-  "tab_stats": "统计"
+  "tab_stats": "统计",
+  "category_private": "私密分类",
+  "category_make_private": "设为私密"
 }

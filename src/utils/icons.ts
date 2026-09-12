@@ -28,6 +28,7 @@ export { default as LayoutGrid } from "lucide-react/dist/esm/icons/layout-grid";
 export { default as Link } from "lucide-react/dist/esm/icons/link";
 export { default as Loader2 } from "lucide-react/dist/esm/icons/loader-2";
 export { default as Lock } from "lucide-react/dist/esm/icons/lock";
+export { default as Unlock } from "lucide-react/dist/esm/icons/unlock";
 export { default as LogIn } from "lucide-react/dist/esm/icons/log-in";
 export { default as LogOut } from "lucide-react/dist/esm/icons/log-out";
 export { default as Menu } from "lucide-react/dist/esm/icons/menu";

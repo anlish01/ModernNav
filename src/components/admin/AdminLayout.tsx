@@ -10,9 +10,10 @@ import {
   Home,
   BarChart3,
 } from "../../utils/icons";
+import { useQueryClient } from "@tanstack/react-query";
 import { storageService } from "../../services/storage";
 import { useLanguage } from "../../contexts/LanguageContext";
-import { useBootstrap } from "../../services/queries";
+import { useBootstrap, queryKeys } from "../../services/queries";
 import { DEFAULT_PREFS } from "../../constants/defaults";
 import { DEFAULT_BACKGROUND } from "../../services/storage";
 import { BackgroundLayer } from "../BackgroundLayer";
@@ -31,6 +32,7 @@ const NAV = [
 export const AdminLayout: React.FC = () => {
   const { t } = useLanguage();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const { data } = useBootstrap();
   const prefersDark = usePrefersDark();
   const background = data?.background ?? DEFAULT_BACKGROUND;
@@ -40,6 +42,9 @@ export const AdminLayout: React.FC = () => {
 
   const handleLogout = async () => {
     await storageService.logout();
+    // Drop the authenticated view: the refetch returns the visitor-filtered
+    // tree without private categories.
+    queryClient.invalidateQueries({ queryKey: queryKeys.bootstrap });
     navigate("/admin/auth", { replace: true });
   };
 

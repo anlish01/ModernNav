@@ -33,6 +33,10 @@ export function validateCategory(data: unknown): ValidationResult {
     };
   }
 
+  if (d.isPrivate !== undefined && typeof d.isPrivate !== "boolean") {
+    return { valid: false, message: "isPrivate must be a boolean" };
+  }
+
   if (!Array.isArray(d.subCategories)) {
     return { valid: false, message: "SubCategories must be an array" };
   }
