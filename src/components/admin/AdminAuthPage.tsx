@@ -4,8 +4,9 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { storageService } from "../../services/storage";
 import { useBootstrap } from "../../services/queries";
-import { ThemeMode } from "../../types";
 import { DEFAULT_PREFS } from "../../constants/defaults";
+import { usePrefersDark } from "../../hooks/usePrefersDark";
+import { resolveThemeMode } from "../../utils/theme";
 
 export const AdminAuthPage: React.FC = () => {
   const { t } = useLanguage();
@@ -13,8 +14,12 @@ export const AdminAuthPage: React.FC = () => {
   const location = useLocation();
   const { data } = useBootstrap();
   const isDefaultCode = data?.isDefaultCode ?? false;
-  const themeMode = data?.prefs.themeMode ?? DEFAULT_PREFS.themeMode;
-  const themeClass = themeMode === ThemeMode.Light ? "theme-light" : "theme-dark";
+  // "auto" resolves against the OS preference — same rule as AdminLayout.
+  const prefersDark = usePrefersDark();
+  const themeClass =
+    resolveThemeMode(data?.prefs.themeMode ?? DEFAULT_PREFS.themeMode, prefersDark) === "light"
+      ? "theme-light"
+      : "theme-dark";
 
   const [authInput, setAuthInput] = useState("");
   const [authError, setAuthError] = useState("");

@@ -142,8 +142,8 @@ export function validatePreferences(data: unknown): ValidationResult {
   }
 
   if (d.themeMode !== undefined) {
-    if (d.themeMode !== "dark" && d.themeMode !== "light") {
-      return { valid: false, message: "Theme mode must be either 'dark' or 'light'" };
+    if (d.themeMode !== "dark" && d.themeMode !== "light" && d.themeMode !== "auto") {
+      return { valid: false, message: "Theme mode must be 'dark', 'light' or 'auto'" };
     }
   }
 

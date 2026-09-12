@@ -347,7 +347,7 @@ export function useContentEditor(
   };
 
   const handleDeleteLink = (subId: string, linkId: string) => {
-    if (window.confirm("Delete this link?")) {
+    if (window.confirm(t("delete_link_confirm"))) {
       onUpdateCategories(
         categories.map((cat) =>
           cat.id === selectedCategoryId

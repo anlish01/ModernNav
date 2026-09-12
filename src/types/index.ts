@@ -29,6 +29,7 @@ export interface SearchEngine {
 export enum ThemeMode {
   Dark = "dark",
   Light = "light",
+  Auto = "auto",
 }
 
 export interface FooterLink {

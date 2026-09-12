@@ -51,5 +51,13 @@ export { default as Upload } from "lucide-react/dist/esm/icons/upload";
 export { default as Wand2 } from "lucide-react/dist/esm/icons/wand-2";
 export { default as X } from "lucide-react/dist/esm/icons/x";
 
+export { default as Wallpaper } from "lucide-react/dist/esm/icons/wallpaper";
+
+export { default as BarChart3 } from "lucide-react/dist/esm/icons/bar-chart-3";
+
+export { default as Shuffle } from "lucide-react/dist/esm/icons/shuffle";
+
+export { default as Monitor } from "lucide-react/dist/esm/icons/monitor";
+
 // Icon component type (type-only import — elided at build time).
 export type { LucideIcon } from "lucide-react";
